@@ -1,8 +1,8 @@
 import request from '@/config/axios'
 
 // 根据id获取小麦表型数据
-export const getWheatData = async (wheatVarietyNameCn:string) => {
-  return await request.get({ url: '/wheat/wheat/page?wheatVarietyNameCn='+ wheatVarietyNameCn })
+export const getWheatData = async (id:number) => {
+  return await request.get({ url: '/wheat/wheat/get?id='+ id })
 }
 // 获取小麦表型数据
 export const getWheatDataList = async (params) => {

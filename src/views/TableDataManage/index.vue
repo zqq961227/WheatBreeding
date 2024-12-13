@@ -194,6 +194,7 @@ const downloadTableTemplate = async () => {
 /** 初始化 **/
 onMounted(() => {
   tableObject.tableList.value = getList()
+  tableDataApi.getWheatData(352);
 })
 </script>
 <style lang="scss" scoped>
