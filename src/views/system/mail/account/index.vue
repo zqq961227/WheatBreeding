@@ -27,6 +27,7 @@
       :pagination="{
         total: tableObject.total
       }"
+      
       v-model:pageSize="tableObject.pageSize"
       v-model:currentPage="tableObject.currentPage"
     >

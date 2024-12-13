@@ -66,16 +66,16 @@ watch(
       ]"
       to="/"
     >
-      <img
+      <!-- <img
         class="h-[calc(var(--logo-height)-10px)] w-[calc(var(--logo-height)-10px)]"
         src="@/assets/imgs/logo.png"
-      />
+      /> -->
       <div
         v-if="show"
         :class="[
-          'ml-10px text-16px font-700',
+          'ml-10 text-3.5vh font-500',
           {
-            'text-[var(--logo-title-text-color)]': layout === 'classic',
+            'text-#4D6276': layout === 'classic',
             'text-[var(--top-header-text-color)]':
               layout === 'topLeft' || layout === 'top' || layout === 'cutMenu'
           }
@@ -86,3 +86,4 @@ watch(
     </router-link>
   </div>
 </template>
+

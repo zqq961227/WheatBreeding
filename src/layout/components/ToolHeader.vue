@@ -55,17 +55,17 @@ export default defineComponent({
       >
         {layout.value !== 'top' ? (
           <div class="h-full flex items-center">
-            {hamburger.value && layout.value !== 'cutMenu' ? (
+            {/* {hamburger.value && layout.value !== 'cutMenu' ? (
               <Collapse class="custom-hover" color="var(--top-header-text-color)"></Collapse>
-            ) : undefined}
+            ) : undefined} */}
             {breadcrumb.value ? <Breadcrumb class="lt-md:hidden"></Breadcrumb> : undefined}
           </div>
         ) : undefined}
         <div class="h-full flex items-center">
-          {screenfull.value ? (
+          {/* {screenfull.value ? (
             <Screenfull class="custom-hover" color="var(--top-header-text-color)"></Screenfull>
-          ) : undefined}
-          {search.value ? <RouterSearch isModal={false} /> : undefined}
+          ) : undefined} */}
+          {/* {search.value ? <RouterSearch isModal={false} /> : undefined}
           {size.value ? (
             <SizeDropdown class="custom-hover" color="var(--top-header-text-color)"></SizeDropdown>
           ) : undefined}
@@ -77,7 +77,7 @@ export default defineComponent({
           ) : undefined}
           {message.value ? (
             <Message class="custom-hover" color="var(--top-header-text-color)"></Message>
-          ) : undefined}
+          ) : undefined} */}
           <UserInfo></UserInfo>
         </div>
       </div>

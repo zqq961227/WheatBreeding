@@ -129,6 +129,13 @@ export default defineComponent({
 <style lang="scss" scoped>
 $prefix-cls: #{$namespace}-menu;
 
+.#{$elNamespace}-menu-item {
+  font-size: 18px; /* 这里设置你需要的字体大小 */
+  // display: flex;
+  // justify-content: center;
+  // border:1px solid red;
+  margin-top: 8px;
+}
 .#{$prefix-cls} {
   position: relative;
   transition: width var(--transition-time-02);
@@ -136,11 +143,13 @@ $prefix-cls: #{$namespace}-menu;
   :deep(.#{$elNamespace}-menu) {
     width: 100% !important;
     border-right: none;
+    padding: 0px 16px;
 
     // 设置选中时子标题的颜色
     .is-active {
       & > .#{$elNamespace}-sub-menu__title {
         color: var(--left-menu-text-active-color) !important;
+
       }
     }
 
@@ -157,6 +166,9 @@ $prefix-cls: #{$namespace}-menu;
     .#{$elNamespace}-menu-item.is-active {
       color: var(--left-menu-text-active-color) !important;
       background-color: var(--left-menu-bg-active-color) !important;
+      border-radius: 28px;
+      background: linear-gradient(90deg, rgba(0, 193, 158, 0.1) 0%, rgba(166, 232, 82, 0.1) 100%);
+
 
       &:hover {
         background-color: var(--left-menu-bg-active-color) !important;
@@ -171,6 +183,7 @@ $prefix-cls: #{$namespace}-menu;
     .#{$elNamespace}-menu {
       .#{$elNamespace}-sub-menu__title,
       .#{$elNamespace}-menu-item:not(.is-active) {
+
         background-color: var(--left-menu-bg-light-color) !important;
       }
     }
@@ -201,6 +214,10 @@ $prefix-cls: #{$namespace}-menu;
       &:not(.#{$elNamespace}-menu--collapse) .#{$elNamespace}-sub-menu__title,
       .#{$elNamespace}-menu-item {
         padding-right: 0;
+        font-size: 18px; /* 这里设置你需要的字体大小 */
+        border-radius: 28px;
+
+
       }
     }
   }

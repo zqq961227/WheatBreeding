@@ -52,12 +52,12 @@ export const useAppStore = defineStore('app', {
       breadcrumbIcon: true, // 面包屑图标
       collapse: false, // 折叠菜单
       uniqueOpened: true, // 是否只保持一个子菜单的展开
-      hamburger: true, // 折叠图标
-      screenfull: true, // 全屏图标
-      search: true, // 搜索图标
-      size: true, // 尺寸图标
-      locale: true, // 多语言图标
-      message: true, // 消息图标
+      hamburger: false, // 折叠图标
+      screenfull: false, // 全屏图标
+      search: false, // 搜索图标
+      size: false, // 尺寸图标
+      locale: false, // 多语言图标
+      message: false, // 消息图标
       tagsView: true, // 标签页
       tagsViewImmerse: false, // 标签页沉浸
       tagsViewIcon: true, // 是否显示标签图标
@@ -72,29 +72,30 @@ export const useAppStore = defineStore('app', {
       currentSize: wsCache.get('default') || 'default', // 组件尺寸
       theme: wsCache.get(CACHE_KEY.THEME) || {
         // 主题色
-        elColorPrimary: '#409eff',
+        // elColorPrimary: '#409eff',
+        elColorPrimary:'#00C19E',
         // 左侧菜单边框颜色
         leftMenuBorderColor: 'inherit',
         // 左侧菜单背景颜色
-        leftMenuBgColor: '#001529',
+        leftMenuBgColor: '#FFFFFF',
         // 左侧菜单浅色背景颜色
-        leftMenuBgLightColor: '#0f2438',
+        leftMenuBgLightColor: '#FFFFFF',
         // 左侧菜单选中背景颜色
         leftMenuBgActiveColor: 'var(--el-color-primary)',
         // 左侧菜单收起选中背景颜色
         leftMenuCollapseBgActiveColor: 'var(--el-color-primary)',
         // 左侧菜单字体颜色
-        leftMenuTextColor: '#bfcbd9',
+        leftMenuTextColor: '#4D6276',
         // 左侧菜单选中字体颜色
-        leftMenuTextActiveColor: '#fff',
+        leftMenuTextActiveColor: '#00C19E',
         // logo字体颜色
-        logoTitleTextColor: '#fff',
+        logoTitleTextColor: '#4D6276',
         // logo边框颜色
         logoBorderColor: 'inherit',
         // 头部背景颜色
         topHeaderBgColor: '#fff',
         // 头部字体颜色
-        topHeaderTextColor: 'inherit',
+        topHeaderTextColor: '#1C1F37',
         // 头部悬停颜色
         topHeaderHoverColor: '#f6f6f6',
         // 头部边框颜色

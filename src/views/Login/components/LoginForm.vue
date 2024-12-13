@@ -15,7 +15,7 @@
           <LoginFormTitle style="width: 100%" />
         </el-form-item>
       </el-col>
-      <el-col :span="24" style="padding-right: 10px; padding-left: 10px">
+      <!-- <el-col :span="24" style="padding-right: 10px; padding-left: 10px">
         <el-form-item v-if="loginData.tenantEnable === 'true'" prop="tenantName">
           <el-input
             v-model="loginData.loginForm.tenantName"
@@ -25,7 +25,7 @@
             type="primary"
           />
         </el-form-item>
-      </el-col>
+      </el-col> -->
       <el-col :span="24" style="padding-right: 10px; padding-left: 10px">
         <el-form-item prop="username">
           <el-input
@@ -52,14 +52,14 @@
         style="padding-right: 10px; padding-left: 10px; margin-top: -20px; margin-bottom: -20px"
       >
         <el-form-item>
-          <el-row justify="space-between" style="width: 100%">
+          <el-row justify="space-between" style="width: 100%;">
             <el-col :span="6">
-              <el-checkbox v-model="loginData.loginForm.rememberMe">
-                {{ t('login.remember') }}
+              <el-checkbox v-model="loginData.loginForm.rememberMe" style="color:black">
+                {{ t('记住账号') }}
               </el-checkbox>
             </el-col>
             <el-col :offset="6" :span="12">
-              <el-link style="float: right" type="primary">{{ t('login.forgetPassword') }}</el-link>
+              <el-link style="float: right;" type="primary">{{ t('login.forgetPassword') }}</el-link>
             </el-col>
           </el-row>
         </el-form-item>
@@ -69,7 +69,7 @@
           <XButton
             :loading="loginLoading"
             :title="t('login.login')"
-            class="w-[100%]"
+            class="w-[100%] button"
             type="primary"
             @click="getCode()"
           />
@@ -82,7 +82,7 @@
         mode="pop"
         @success="handleLogin"
       />
-      <el-col :span="24" style="padding-right: 10px; padding-left: 10px">
+      <!-- <el-col :span="24" style="padding-right: 10px; padding-left: 10px">
         <el-form-item>
           <el-row :gutter="5" justify="space-between" style="width: 100%">
             <el-col :span="8">
@@ -124,8 +124,8 @@
             />
           </div>
         </el-form-item>
-      </el-col>
-      <el-divider content-position="center">萌新必读</el-divider>
+      </el-col> -->
+      <!-- <el-divider content-position="center">萌新必读</el-divider>
       <el-col :span="24" style="padding-right: 10px; padding-left: 10px">
         <el-form-item>
           <div class="w-[100%] flex justify-between">
@@ -139,7 +139,7 @@
             </el-link>
           </div>
         </el-form-item>
-      </el-col>
+      </el-col> -->
     </el-row>
   </el-form>
 </template>
@@ -351,5 +351,9 @@ onMounted(() => {
     vertical-align: middle;
     cursor: pointer;
   }
+}
+
+.button{
+  background: #14c5a3;
 }
 </style>

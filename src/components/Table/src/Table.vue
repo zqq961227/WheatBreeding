@@ -1,5 +1,5 @@
 <script lang="tsx">
-import { ElTable, ElTableColumn, ElPagination } from 'element-plus'
+import { ElTable, ElTableColumn, ElPagination, ElButton } from 'element-plus'
 import { defineComponent, PropType, ref, computed, unref, watch, onMounted } from 'vue'
 import { propTypes } from '@/utils/propTypes'
 import { setIndex } from './helper'
@@ -34,22 +34,28 @@ export default defineComponent({
     reserveSelection: propTypes.bool.def(false),
     // 加载状态
     loading: propTypes.bool.def(false),
+    // 是否冻结
+    frozen: propTypes.bool.def(false), // 新增冻结属性
+    showBatchDelete: {
+      type: Boolean,
+      default: true // 默认为 true，显示批量删除按钮
+    },
     // 是否叠加索引
     reserveIndex: propTypes.bool.def(false),
     // 对齐方式
     align: propTypes.string
       .validate((v: string) => ['left', 'center', 'right'].includes(v))
-      .def('center'),
+      .def('left'),
     // 表头对齐方式
     headerAlign: propTypes.string
       .validate((v: string) => ['left', 'center', 'right'].includes(v))
-      .def('center'),
+      .def('left'),
     data: {
       type: Array as PropType<Recordable[]>,
       default: () => []
     }
   },
-  emits: ['update:pageSize', 'update:currentPage', 'register'],
+  emits: ['update:pageSize', 'update:currentPage', 'register', 'batch-delete'],
   setup(props, { attrs, slots, emit, expose }) {
     const elTableRef = ref<ComponentRef<typeof ElTable>>()
 
@@ -195,6 +201,7 @@ export default defineComponent({
             headerAlign={headerAlign}
             {...props}
             prop={v.field}
+            fixed={v.frozen === 'left' || v.frozen === 'right' ? v.frozen : undefined}
           >
             {{
               default: (data: TableSlotDefault) =>
@@ -211,7 +218,15 @@ export default defineComponent({
         )
       })
     }
-
+    const handleBatchDelete = () => {
+      if (selections.value.length > 0) {
+        emit('batch-delete', selections.value) // 触发 batch-delete 事件
+        selections.value = [] // 清空选中的行
+      } else {
+        alert('请选择要删除的数据')
+      }
+    }
+    // const canShowDeleteButton = ref(false); // 控制按钮的显示与否
     const rnderTableColumn = (columnsChildren?: TableColumn[]) => {
       const {
         columns,
@@ -220,7 +235,8 @@ export default defineComponent({
         currentPage,
         align,
         headerAlign,
-        showOverflowTooltip
+        showOverflowTooltip,
+        batchDelete
       } = unref(getProps)
       return [...[renderTableExpand()], ...[renderTableSelection()]].concat(
         (columnsChildren || columns).map((v) => {
@@ -250,6 +266,7 @@ export default defineComponent({
                 headerAlign={headerAlign}
                 {...props}
                 prop={v.field}
+                fixed={v.frozen === 'left' || v.frozen === 'right' ? v.frozen : undefined} // 动态设置冻结
               >
                 {{
                   default: (data: TableSlotDefault) =>
@@ -284,14 +301,26 @@ export default defineComponent({
             append: () => getSlot(slots, 'append')
           }}
         </ElTable>
+
         {unref(getProps).pagination ? (
           // update by 芋艿：保持和 Pagination 组件一致
-          <ElPagination
-            v-model:pageSize={pageSizeRef.value}
-            v-model:currentPage={currentPageRef.value}
-            class="float-right mb-15px mt-15px"
-            {...unref(pagination)}
-          ></ElPagination>
+          <div>
+            <ElPagination
+              v-model:pageSize={pageSizeRef.value}
+              v-model:currentPage={currentPageRef.value}
+              class="float-left mb-15px mt-15px"
+              {...unref(pagination)}
+            ></ElPagination>{' '}
+            {props.showBatchDelete && selections.value.length > 0 ? (
+              <ElButton
+                class="float-right mb-15px mt-15px"
+                icon="el-icon-delete"
+                onClick={handleBatchDelete}
+              >
+                批量删除
+              </ElButton>
+            ) : null}
+          </div>
         ) : undefined}
       </div>
     )
@@ -303,9 +332,20 @@ export default defineComponent({
   padding: 8px 4px;
   margin-left: 0;
 }
-
 :deep(.el-button.is-link) {
   padding: 8px 4px;
   margin-left: 0;
+}
+::deep(.el-table .is-fixed-left) {
+  background-color: #f9f9f9; /* 可选：设置背景色 */
+  border-right: 2px solid #dcdfe6; /* 添加右侧边框 */
+  z-index: 1; /* 确保层级高于非冻结列 */
+}
+
+/* 右侧冻结列：添加左侧边框 */
+::deep(.el-table .is-fixed-right) {
+  background-color: #f9f9f9; /* 可选：设置背景色 */
+  border-left: 2px solid #dcdfe6; /* 添加左侧边框 */
+  z-index: 1; /* 确保层级高于非冻结列 */
 }
 </style>

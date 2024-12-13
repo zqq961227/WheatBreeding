@@ -77,21 +77,23 @@ const dialogStyle = computed(() => {
         <div
           class="absolute right-15px top-[50%] h-54px flex translate-y-[-50%] items-center justify-between"
         >
-          <Icon
+          <!-- <Icon
             v-if="fullscreen"
             class="is-hover mr-10px cursor-pointer"
             :icon="isFullscreen ? 'radix-icons:exit-full-screen' : 'radix-icons:enter-full-screen'"
             color="var(--el-color-info)"
             hover-color="var(--el-color-primary)"
             @click="toggleFull"
-          />
-          <Icon
+          /> -->
+
+          <!-- <Icon
             class="is-hover cursor-pointer"
             icon="ep:close"
             hover-color="var(--el-color-primary)"
             color="var(--el-color-info)"
-            @click="close"
-          />
+            
+          /> -->
+          <img @click="close" src="@/assets/account/close.svg" alt="" />
         </div>
       </div>
     </template>
@@ -112,24 +114,32 @@ const dialogStyle = computed(() => {
     display: flex;
     justify-content: center;
     align-items: center;
+
   }
 
   .#{$elNamespace}-dialog {
     margin: 0 !important;
 
     &__header {
-      height: 54px;
-      padding: 0;
+      height: 60px;
+      width: 100%; /* 确保 header 宽度为 100% */
       margin-right: 0 !important;
-      border-bottom: 1px solid var(--el-border-color);
+      // border-bottom: 1px solid var(--el-border-color);
+      border-bottom: 1px solid #E6EFF5;
+      margin-bottom: 20px;
+      width: 100%;
+      background: linear-gradient(90deg, #00C19E 53%, rgba(0,193,158,0) 100%);
+
+
     }
 
     &__body {
-      padding: 15px !important;
+      // padding: 15px !important;
+
     }
 
     &__footer {
-      border-top: 1px solid var(--el-border-color);
+      // border-top: 1px solid var(--el-border-color);
     }
 
     &__headerbtn {
@@ -137,4 +147,5 @@ const dialogStyle = computed(() => {
     }
   }
 }
+
 </style>

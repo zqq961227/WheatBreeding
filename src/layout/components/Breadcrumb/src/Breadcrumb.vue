@@ -50,7 +50,7 @@ export default defineComponent({
         const disabled = !v.redirect || v.redirect === 'noredirect'
         const meta = v.meta as RouteMeta
         return (
-          <ElBreadcrumbItem to={{ path: disabled ? '' : v.path }} key={v.name}>
+          <ElBreadcrumbItem  to={{ path: disabled ? '' : v.path }} key={v.name}>
             {meta?.icon && breadcrumbIcon.value ? (
               <div class="flex items-center">
                 <Icon icon={meta.icon} class="mr-[2px]" svgClass="inline-block"></Icon>
@@ -94,10 +94,15 @@ $prefix-cls: #{$elNamespace}-breadcrumb;
 .#{$prefix-cls} {
   :deep(.#{$prefix-cls}__item) {
     display: flex;
+    margin-left: 24px;
     .#{$prefix-cls}__inner {
       display: flex;
       align-items: center;
-      color: var(--top-header-text-color);
+      font-size: 3vh;
+      font-weight: 400;
+      color: #1C1F37;
+      font-family: Source Han Sans CN;
+      // color: var(--top-header-text-color);
 
       &:hover {
         color: var(--el-color-primary);
@@ -107,7 +112,9 @@ $prefix-cls: #{$elNamespace}-breadcrumb;
 
   :deep(.#{$prefix-cls}__item):not(:last-child) {
     .#{$prefix-cls}__inner {
-      color: var(--top-header-text-color);
+      // color: var(--top-header-text-color);
+      color: #1C1F37;
+
 
       &:hover {
         color: var(--el-color-primary);
@@ -119,7 +126,9 @@ $prefix-cls: #{$elNamespace}-breadcrumb;
     .#{$prefix-cls}__inner {
       display: flex;
       align-items: center;
-      color: var(--el-text-color-placeholder);
+      // color: var(--el-text-color-placeholder);
+      color: #1C1F37;
+
 
       &:hover {
         color: var(--el-text-color-placeholder);

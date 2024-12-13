@@ -20,7 +20,7 @@ const props = defineProps({
   // 是否需要栅格布局
   isCol: propTypes.bool.def(false),
   // 表单label宽度
-  labelWidth: propTypes.oneOfType([String, Number]).def('auto'),
+  // labelWidth: propTypes.oneOfType([String, Number]).def('auto'),
   // 操作按钮风格位置
   layout: propTypes.string.validate((v: string) => ['inline', 'bottom'].includes(v)).def('inline'),
   // 底部按钮的对齐方式
@@ -114,8 +114,8 @@ const setVisible = () => {
     <template #action>
       <div v-if="layout === 'inline'">
         <!-- update by 芋艿：去除搜索的 type="primary"，颜色变淡一点 -->
-        <ElButton v-if="showSearch" @click="search">
-          <Icon class="mr-5px" icon="ep:search" />
+        <ElButton class="rightBtns" v-if="showSearch" @click="search">
+          <img src="@/assets/tableDataManage/search.svg" style="margin-right: 10px" alt="" />
           {{ t('common.query') }}
         </ElButton>
         <!-- update by 芋艿：将 icon="ep:refresh-right" 修改成 icon="ep:refresh"，和 ruoyi-vue 搜索保持一致  -->
@@ -151,7 +151,32 @@ const setVisible = () => {
         <Icon :icon="visible ? 'ep:arrow-up' : 'ep:arrow-down'" />
       </ElButton>
       <!-- add by 芋艿：补充在搜索后的按钮 -->
-      <slot name="actionMore"></slot>
+      <slot name=""></slot>
     </div>
   </template>
 </template>
+
+<style scoped lang="scss">
+:deep(.el-form-item__label) {
+  display: none;
+}
+
+.rightBtns {
+  width: 100px;
+  height: 44px;
+  background: #00c19e;
+  margin-top: 20px;
+  border-radius: 12px 12px 12px 12px;
+  font-family:
+    Source Han Sans CN,
+    Source Han Sans CN;
+  font-weight: 400;
+  font-size: 16px;
+  color: #ffffff;
+  line-height: 21px;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+  border: transparent;
+}
+</style>

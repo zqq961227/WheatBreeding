@@ -2,6 +2,7 @@ import { Ref } from 'vue'
 
 export enum LoginStateEnum {
   LOGIN,
+  LOGINQIAN,
   REGISTER,
   RESET_PASSWORD,
   MOBILE,

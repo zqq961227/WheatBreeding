@@ -54,15 +54,15 @@ const remainingRouter: AppRouteRecordRaw[] = [
     path: '/',
     component: Layout,
     redirect: '/index',
-    name: 'Home',
+    name: 'homepage',
     meta: {},
     children: [
       {
         path: 'index',
-        component: () => import('@/views/Home/Index.vue'),
+        component: () => import('@/views/homepage/Index.vue'),
         name: 'Index',
         meta: {
-          title: t('router.home'),
+          title: t('首页概览'),
           icon: 'ep:home-filled',
           noCache: false,
           affix: true
@@ -176,8 +176,8 @@ const remainingRouter: AppRouteRecordRaw[] = [
   },
   {
     path: '/login',
-    component: () => import('@/views/Login/Login.vue'),
-    name: 'Login',
+    component: () => import('@/views/Login/WheatLogin.vue'),
+    name: 'WheatLogin',
     meta: {
       hidden: true,
       title: t('router.login'),
@@ -483,6 +483,39 @@ const remainingRouter: AppRouteRecordRaw[] = [
       }
     ]
   },
+  
+  {
+    path: '/tableDataManage',
+    component: Layout,
+    name: 'TableDataManage',
+    meta: {
+      hidden: false
+    },
+    children: [
+      {
+        path: 'index',
+        name: 'tableDataManageIndex',
+        meta: {
+          title: '表形数据管理',
+          noCache: true,
+        },
+        component: () => import('@/views/TableDataManage/index.vue')
+      },
+      {
+        path: 'detail',
+        name: 'detail',
+        meta: {
+          title: '表形数据管理',
+          noCache: true,
+          hidden: true,
+          // activeMenu: '/iot/product'
+        },
+        component: () => import('@/views/TableDataManage/detailData.vue')
+      }
+      
+    ]
+  },
+  
   {
     path: '/crm',
     component: Layout,
@@ -640,7 +673,28 @@ const remainingRouter: AppRouteRecordRaw[] = [
         component: () => import('@/views/iot/device/detail/index.vue')
       }
     ]
-  }
+  },
+  {
+    path: '/account',
+    component: Layout,
+    name: 'Account',
+    meta: {
+      hidden: false
+    },
+    children: [
+      {
+        path: 'index',
+        name: 'index',
+        meta: {
+          title: '账号管理',
+          noCache: true,
+        },
+        component: () => import('@/views/account/account.vue')
+      }
+      
+    ]
+  },
+  
 ]
 
 export default remainingRouter

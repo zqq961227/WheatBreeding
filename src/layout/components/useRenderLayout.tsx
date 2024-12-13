@@ -39,14 +39,16 @@ export const useRenderLayout = () => {
   const renderClassic = () => {
     return (
       <>
-        <div
+      {/* 左边侧边栏 */}
+        <div 
           class={[
             'absolute top-0 left-0 h-full layout-border__right',
             { '!fixed z-3000': mobile.value }
           ]}
         >
+          {/* 左上logo */}
           {logo.value ? (
-            <Logo
+            <Logo 
               class={[
                 'bg-[var(--left-menu-bg-color)] relative',
                 {
@@ -58,9 +60,10 @@ export const useRenderLayout = () => {
               style="transition: all var(--transition-time-02);"
             ></Logo>
           ) : undefined}
+          {/* 左侧边栏菜单 */}
           <Menu class={[{ '!h-[calc(100%-var(--logo-height))]': logo.value }]}></Menu>
         </div>
-        <div
+        <div 
           class={[
             `${prefixCls}-content`,
             'absolute top-0 h-[100%]',
@@ -74,7 +77,7 @@ export const useRenderLayout = () => {
           ]}
           style="transition: all var(--transition-time-02);"
         >
-          <ElScrollbar
+          <ElScrollbar 
             v-loading={pageLoading.value}
             class={[
               `${prefixCls}-content-scrollbar`,
@@ -84,7 +87,7 @@ export const useRenderLayout = () => {
               }
             ]}
           >
-            <div
+            <div 
               class={[
                 {
                   'fixed top-0 left-0 z-10': fixedHeader.value,
@@ -106,11 +109,10 @@ export const useRenderLayout = () => {
                 ]}
               ></ToolHeader>
 
-              {tagsView.value ? (
+              {/* {tagsView.value ? (
                 <TagsView class="layout-border__top layout-border__bottom"></TagsView>
-              ) : undefined}
+              ) : undefined} */}
             </div>
-
             <AppView></AppView>
           </ElScrollbar>
         </div>
@@ -151,7 +153,7 @@ export const useRenderLayout = () => {
                 }
               ]}
             >
-              {tagsView.value ? (
+              {/* {tagsView.value ? (
                 <TagsView
                   class={[
                     'layout-border__bottom absolute',
@@ -165,7 +167,7 @@ export const useRenderLayout = () => {
                   ]}
                   style="transition: width var(--transition-time-02), left var(--transition-time-02);"
                 ></TagsView>
-              ) : undefined}
+              ) : undefined} */}
 
               <AppView></AppView>
             </ElScrollbar>
@@ -201,7 +203,7 @@ export const useRenderLayout = () => {
               }
             ]}
           >
-            {tagsView.value ? (
+            {/* {tagsView.value ? (
               <TagsView
                 class={[
                   'layout-border__bottom layout-border__top relative',
@@ -211,7 +213,7 @@ export const useRenderLayout = () => {
                 ]}
                 style="transition: width var(--transition-time-02), left var(--transition-time-02);"
               ></TagsView>
-            ) : undefined}
+            ) : undefined} */}
 
             <AppView></AppView>
           </ElScrollbar>
@@ -257,7 +259,7 @@ export const useRenderLayout = () => {
                 }
               ]}
             >
-              {tagsView.value ? (
+              {/* {tagsView.value ? (
                 <TagsView
                   class={[
                     'relative layout-border__bottom',
@@ -275,7 +277,7 @@ export const useRenderLayout = () => {
                   ]}
                   style="transition: width var(--transition-time-02), left var(--transition-time-02);"
                 ></TagsView>
-              ) : undefined}
+              ) : undefined} */}
 
               <AppView></AppView>
             </ElScrollbar>
