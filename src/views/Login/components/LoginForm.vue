@@ -9,8 +9,8 @@
     label-width="120px"
     size="large"
   >
-    <el-row style="margin-right: -10px; margin-left: -10px">
-      <el-col :span="24" style="padding-right: 10px; padding-left: 10px">
+    <el-row style="margin-right: -0.7vw; margin-left: -0.7vw;margin-top:-1.3vw">
+      <el-col :span="24" style="padding-right: 2.4vw; padding-left: 2.4vw;height:6.4vw;margin-top:2.4vw">
         <el-form-item>
           <LoginFormTitle style="width: 100%" />
         </el-form-item>
@@ -26,16 +26,31 @@
           />
         </el-form-item>
       </el-col> -->
-      <el-col :span="24" style="padding-right: 10px; padding-left: 10px">
-        <el-form-item prop="username">
+      <el-col
+        :span="24"
+        style="padding-right: 2.4vw; padding-left: 2.4vw;height:1.8vw;margin-top:1.7vw"
+      >
+        <el-form-item>
+          <el-row  style=" width:100%;font-family: Alibaba PuHuiTi;  font-size: 1.1vw;  font-weight: 400;">
+            <el-col :span="5.5" style="color: rgba(0,0,0,0.6);">
+              没有账号吗？
+            </el-col>
+            <el-col :offset="5.5" :span="6" style="color: rgba(0,0,0,0.9);">
+              注册新账号
+            </el-col>
+          </el-row>
+        </el-form-item>
+      </el-col>
+      <el-col :span="24" style="padding-right: 2.4vw; padding-left: 2.4vw; margin-top:3.3vw;height:2.8vw">
+        <el-form-item prop="username"  >
           <el-input
             v-model="loginData.loginForm.username"
             :placeholder="t('login.usernamePlaceholder')"
-            :prefix-icon="iconAvatar"
+            :prefix-icon="iconAvatar" style=" font-size:1.1vw; height:2.8vw;border-radius:1.4vw"
           />
         </el-form-item>
       </el-col>
-      <el-col :span="24" style="padding-right: 10px; padding-left: 10px">
+      <el-col :span="24" style="padding-right: 2.4vw; padding-left: 2.4vw; height:2.8vw;margin-top:1.7vw">
         <el-form-item prop="password">
           <el-input
             v-model="loginData.loginForm.password"
@@ -44,27 +59,29 @@
             show-password
             type="password"
             @keyup.enter="getCode()"
+            style=" font-size:1.1vw; height:2.8vw;"
           />
         </el-form-item>
       </el-col>
+      
       <el-col
         :span="24"
-        style="padding-right: 10px; padding-left: 10px; margin-top: -20px; margin-bottom: -20px"
+        style="padding-right: 2.4vw; padding-left: 2.4vw; margin-top: 1.2vw; margin-bottom: -1.4vw; height:1.5vw"
       >
         <el-form-item>
           <el-row justify="space-between" style="width: 100%;">
             <el-col :span="6">
-              <el-checkbox v-model="loginData.loginForm.rememberMe" style="color:black">
+              <el-checkbox v-model="loginData.loginForm.rememberMe" style="color:#000;">
                 {{ t('记住账号') }}
               </el-checkbox>
             </el-col>
             <el-col :offset="6" :span="12">
-              <el-link style="float: right;" type="primary">{{ t('login.forgetPassword') }}</el-link>
+              <el-link style="float: right;font-size:1.1vw" type="primary">{{ t('login.forgetPassword') }}</el-link>
             </el-col>
           </el-row>
         </el-form-item>
       </el-col>
-      <el-col :span="24" style="padding-right: 10px; padding-left: 10px">
+      <el-col :span="24" style="padding-right: 2.4vw; padding-left: 2.4vw; margin-top:4.7vw; height:2.8vw">
         <el-form-item>
           <XButton
             :loading="loginLoading"
@@ -72,7 +89,18 @@
             class="w-[100%] button"
             type="primary"
             @click="getCode()"
+            style="height:2.8vw;border-radius: 1.5vw;font-size:1.1vw"
           />
+        </el-form-item>
+      </el-col>
+      <el-col
+        :span="24"
+        style="padding-right: 2.4vw; padding-left: 2.4vw; height:1.5vw;"
+      >
+        <el-form-item>
+          <el-col :span="5.5" style="color: rgba(0,193,158,1);font-size:1.1vw;margin-top:1.6vw;">
+              以访客身份进入
+            </el-col>
         </el-form-item>
       </el-col>
       <Verify
@@ -354,6 +382,30 @@ onMounted(() => {
 }
 
 .button{
-  background: #14c5a3;
+  //background: #14c5a3;
+  width: Fixed (400px)px;
+height: Hug (40px)px;
+top: 730px;
+left: 271px;
+padding: 8px 24px 8px 24px;
+gap: 10px;
+border-radius: 20px;
+opacity: 0px;
+background: #00C19E;
+border-color:#00C19E;
+font-family: Source Han Sans CN;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+text-align: center;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+
+}
+:deep(.el-checkbox.el-checkbox--large .el-checkbox__label){
+  font-size: 1.1vw;
+}
+:deep(.el-input--large .el-input__wrapper){
+  border-radius: 1.4vw;
 }
 </style>

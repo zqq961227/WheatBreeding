@@ -5,7 +5,7 @@
     </div>
     
     <!-- 登录框 -->
-    <div class="relative z-10 p-6 rounded-lg bg-white shadow-lg w-full sm:w-96">
+    <div class="relative z-10 p-6 rounded-lg bg-white shadow-lg w-full sm:w-96 bg">
       <LoginForm class="m-auto" />
       <!-- 你可以在这里添加其他的登录方式，比如 MobileForm, QrCodeForm 等 -->
     </div>
@@ -43,7 +43,7 @@ $prefix-cls: #{$namespace}-login;
     position: absolute;
     z-index: -1;
     background-image: url('@/assets/svgs/wheat_login.svg');
-    background-position: center;
+    background-position: bottom;;
     background-repeat: no-repeat;
     background-size: cover;
     content: '';
@@ -51,13 +51,32 @@ $prefix-cls: #{$namespace}-login;
   }
   
   /* 登录框 */
-  .login-form-container {
-    width: 100%;
-    max-width: 400px; /* 最大宽度，调整登录框大小 */
-    padding: 20px;
-    background-color: rgb(255 255 255 / 90%); /* 半透明背景 */
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
-  }
+  // .login-form-container {
+  //   width: 100%;
+  //   max-width: 800px; /* 最大宽度，调整登录框大小 */
+  //   padding: 20px;
+  //   background-color: rgb(255 255 255 / 90%); /* 半透明背景 */
+  //   border-radius: 12px;
+  //   box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
+  // }
+  .bg{
+    background: rgba(255,255,255,0.8) !important;
+    position: absolute;
+    // border: 4px solid;
+    border-top: 4px solid rgba(0,193,158,1);
+    border-left: 4px solid rgba(0,193,158,1);
+    border-right: 4px solid rgba(0,193,158,1);
+    border-bottom: transparent;
+    width: 33.6vw;
+    min-width: 200px;
+    height: 39vw;
+    top: 8vw;
+    left: 16vw;
+    gap: 0px;
+    border-radius: 20px;
+    // border-image-source: linear-gradient(to bottom, rgba(0,193,158,1), rgba(255, 255, 255, 0));
+    // border-image-slice: 1;
+    // border-image-repeat: stretch;
+  } 
 }
 </style>

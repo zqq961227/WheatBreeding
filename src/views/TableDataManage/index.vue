@@ -82,7 +82,7 @@
         </el-button>
         <el-button
           link
-          @click="goDetail(row.id)"
+          @click="goDetail(row)"
           v-hasPermi="['system:mail-account:query']"
         >
         <img src="@/assets/tableDataManage/detail.svg" alt="" />
@@ -102,8 +102,8 @@
   <!-- <MailAccountForm ref="formRef" @success="getList" /> -->
   <!-- 详情弹窗 -->
   <UserImportForm ref="importFormRef" @success="getList" />
-
-  <MailAccountDetail ref="detailRef" />
+  <TableDataForm ref="formRef" @success="getList" />
+  <!-- <MailAccountDetail ref="detailRef" /> -->
 </template>
 <script lang="ts" setup>
 import * as tableDataApi from '@/api/tableDataManage/tableData'
@@ -112,6 +112,8 @@ const router = useRouter() // 路由对象
 const message = useMessage() // 消息弹窗
 import { ref } from 'vue'
 import UserImportForm from './UserImportForm.vue'
+import TableDataForm from './TableDataForm.vue'
+
 import * as XLSX from 'xlsx'
 import download from '@/utils/download'
 
@@ -136,7 +138,7 @@ const { getList, setSearchParams } = tableMethods
 /** 添加/修改操作 */
 const formRef = ref()
 const openForm = (type: string, id?: number) => {
-  formRef.value.open(type, id)
+  formRef.value.open(type,id)
 }
 
 /** 详情操作 */
@@ -168,12 +170,17 @@ const handleBatchDelete = (selectedRows: any[]) => {
   })
 }
 // 跳转到详情页
-const goDetail = (id: number) => {
-  router.push({ path: `/tableDataManage/detail?id=` + id })
+const goDetail = (row: any) => {
+  router.push({ path: `/tableDataManage/detail`,
+    query: { wheatVarietyNameCn: row.wheatVarietyNameCn,determinationTaskName:row.determinationTaskName,phenotypicDeterminationBatchId:row.phenotypicDeterminationBatchId }  // 只传递 ID
+ 
+    
+  })
 }
 // 跳转到编辑页
 const edit = (id: number) => {
-  router.push({ path: `/tableDataManage/detail?id=` + id })
+  formRef.value.open(id)
+
 }
 // 下载表头
 const downloadTableTemplate = async () => {
@@ -208,7 +215,7 @@ onMounted(() => {
   height: 11vh;
 }
 .tabs-container {
-  width: 450px; /* 设置父容器的宽度 */
+  // width: 100vw; /* 设置父容器的宽度 */
   background: #f5f7fa;
   border-radius: 16px;
   display: flex;
@@ -216,8 +223,8 @@ onMounted(() => {
 }
 .btn1 {
   position: relative;
-  height: 70px;
-  width: 200px;
+  height: 6.8vh;
+  width: 15.6vw;
   font-family: Source Han Sans CN;
   font-size: 20px;
   font-weight: 400;
@@ -270,8 +277,11 @@ onMounted(() => {
   font-size: 16px;
   font-weight: 400;
   text-align: left;
-  width: 140px;
-  height: 44px;
+  width: 10vw;
+  height: 4.3vh;
   border: 1px solid transparent;
+}
+:deep(.el-table__row){
+  height: 4.5vh;
 }
 </style>
